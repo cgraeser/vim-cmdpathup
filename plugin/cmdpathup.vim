@@ -1,5 +1,5 @@
 " Vim global plugin for faster path navigation in command line
-" Last Change:  2011 Dec 7
+" Last Change:  2012-05-11
 " Maintainer:   Carsten Gräser <graeser@mi.fu-berlin.de>
 " License:      This file is placed in the public domain.
 
