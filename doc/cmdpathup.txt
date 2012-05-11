@@ -1,0 +1,41 @@
+*cmdpathup.txt*	Plugin for faster path navigation on the command line
+
+    Carsten Gräser, 2011-2012
+
+This plugin provides a hotkey to go up by one level
+when editing a file path on the vim command line.
+
+USAGE                             |cmdpathup-usage|
+MAPPINGS                          |cmdpathup-mappings|
+ABOUT                             |cmdpathup-about|
+
+==============================================================================
+USAGE                                                        *cmdpathup-usage*
+Suppose you edit a file system path in the command line
+where | represents the position of the cursor
+
+:e ~/foo/bar/foo-bar/|barbar
+
+Then pressing the plugin hotkey will result in
+
+:e ~/foo/bar/|barbar
+
+In contrast you would have to press <c-w> four times to
+delete '/', 'bar', '-', and 'for' one by one.
+
+==============================================================================
+MAPPINGS                                                  *cmdpathup-mappings*
+By default the pluging maps <c-bs> to its action.
+If you want to use a different hotkey map <plug>CmdPathUp
+on your own.
+
+<c-bs>   or   <Plug>CmdPathUp
+    Go up by one level for the currently edited path.
+
+==============================================================================
+ABOUT                                                        *cmdpathup-about*
+
+Maintainer:   Carsten Gräser <graeser@mi.fu-berlin.de>
+License:      The plugin files are placed in the public domain.
+
+ vim:ft=help:norl:
