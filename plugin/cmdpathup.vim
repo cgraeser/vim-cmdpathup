@@ -9,7 +9,7 @@ endif
 let g:loaded_cmdpathup = 1
 
 
-function! s:CmdPathUpUnifyPath(p,type)
+function! s:UnifyPath(p,type)
     let fullPath = fnamemodify(a:p,':p')
     let r = fnamemodify(fullPath, a:type)
     if (isdirectory(fullPath) && r[-1:]!='/' && len(r)>0)
@@ -19,7 +19,7 @@ function! s:CmdPathUpUnifyPath(p,type)
 endfunction
 
 
-function! CmdPathUp()
+function! s:PathUp()
     let format=':~:.'
 
     " get line until cursor
@@ -35,7 +35,7 @@ function! CmdPathUp()
     let p = fnamemodify(p_cmd,':p')
     let i = strridx(p,'/', len(p)-2)
     let p = ((i<0) && p!='/')?'':p[:(i)]
-    let p = s:CmdPathUpUnifyPath(p,format)
+    let p = s:UnifyPath(p,format)
 
     " this computes the length counting multi-byte characters by one only
     let l = len(substitute(p_cmd, ".", "x", "g"))
@@ -43,8 +43,9 @@ function! CmdPathUp()
 endfunction
 
 
+cmap <unique> <expr> <plug>CmdPathUp <sid>PathUp()
 
-if !hasmapto('CmdPathUp()', 'c')
-    cmap <unique> <expr> <c-bs> CmdPathUp()
+if !hasmapto('<plug>CmdPathUp', 'c')
+    cmap <unique> <c-bs> <plug>CmdPathUp
 endif
 
